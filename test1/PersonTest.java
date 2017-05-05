@@ -124,5 +124,22 @@ public class PersonTest {
 		Person p = new Person("John","Smith",new GregorianCalendar(1976,11,12),"British",null);
 		assertNotNull(p);
 	}
+	
+	@Test
+	public final void testEquals(){
+		Person p = new Person("John","Smith",new GregorianCalendar(1976,11,12),"British",null);
+		Person q = new Person("John","Smith",new GregorianCalendar(1976,11,12),"British",null);
+		assertEquals(p,q);
+		q = new Person("Ned","Kelly",new GregorianCalendar(1846,10,5),"Australian","7119443/A");
+		assertFalse(p.equals(q));
+	}
 
+	@Test
+	public final void testHashCode(){
+		Person p = new Person("John","Smith",new GregorianCalendar(1976,11,12),"British",null);
+		Person q = new Person("John","Smith",new GregorianCalendar(1976,11,12),"British",null);
+		assertEquals(p.hashCode(),q.hashCode());
+		q = new Person("Ned","Kelly",new GregorianCalendar(1846,10,5),"Australian","7119443/A");
+		assertFalse(p.hashCode() == q.hashCode());
+	}
 }

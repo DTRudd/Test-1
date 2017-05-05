@@ -41,7 +41,7 @@ public class BoatTest {
 	@Test
 	public final void testGetSize() {
 		Boat b = new Boat("The Red Pig","Portugal",200);
-		assertEquals(200, b.getSize());
+		assertEquals(200.0, b.getSize());
 	}
 
 	@Test

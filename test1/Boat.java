@@ -16,7 +16,7 @@ public class Boat implements Vehicle {
 	 * @param country
 	 * @param size
 	 */
-	public Boat(String name, String country, int size) {
+	public Boat(String name, String country, double size) {
 		super();
 		this.speed = 0;
 		this.name = name;
@@ -26,12 +26,81 @@ public class Boat implements Vehicle {
 	}
 	
 	/**
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((captain == null) ? 0 : captain.hashCode());
+		result = prime * result + ((country == null) ? 0 : country.hashCode());
+		result = prime * result + ((crew == null) ? 0 : crew.hashCode());
+		result = prime * result + ((currentMarina == null) ? 0 : currentMarina.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((owner == null) ? 0 : owner.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(size);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + speed;
+		return result;
+	}
+
+	/**
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Boat other = (Boat) obj;
+		if (captain == null) {
+			if (other.captain != null)
+				return false;
+		} else if (!captain.equals(other.captain))
+			return false;
+		if (country == null) {
+			if (other.country != null)
+				return false;
+		} else if (!country.equals(other.country))
+			return false;
+		if (crew == null) {
+			if (other.crew != null)
+				return false;
+		} else if (!crew.equals(other.crew))
+			return false;
+		if (currentMarina == null) {
+			if (other.currentMarina != null)
+				return false;
+		} else if (!currentMarina.equals(other.currentMarina))
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (owner == null) {
+			if (other.owner != null)
+				return false;
+		} else if (!owner.equals(other.owner))
+			return false;
+		if (Double.doubleToLongBits(size) != Double.doubleToLongBits(other.size))
+			return false;
+		if (speed != other.speed)
+			return false;
+		return true;
+	}
+
+	/**
 	 * @param name
 	 * @param country
 	 * @param size
 	 * @param owner
 	 */
-	public Boat(String name, String country, int size, Person owner) {
+	public Boat(String name, String country, double size, Person owner) {
 		super();
 		this.speed = 0;
 		this.name = name;
@@ -48,7 +117,7 @@ public class Boat implements Vehicle {
 	 * @param owner
 	 * @param captain
 	 */
-	public Boat(String name, String country, int size, Person owner, Person captain) {
+	public Boat(String name, String country, double size, Person owner, Person captain) {
 		super();
 		this.speed = 0;
 		this.name = name;
@@ -67,7 +136,7 @@ public class Boat implements Vehicle {
 	 * @param captain
 	 * @param crew
 	 */
-	public Boat(String name, String country, int size, Person owner, Person captain, HashSet<Person> crew) {
+	public Boat(String name, String country, double size, Person owner, Person captain, HashSet<Person> crew) {
 		super();
 		this.speed = 0;
 		this.name = name;
@@ -85,7 +154,7 @@ public class Boat implements Vehicle {
 	 * @param owner
 	 * @param crew
 	 */
-	public Boat(String name, String country, int size, Person owner, HashSet<Person> crew) {
+	public Boat(String name, String country, double size, Person owner, HashSet<Person> crew) {
 		super();
 		this.speed = 0;
 		this.name = name;
@@ -101,7 +170,7 @@ public class Boat implements Vehicle {
 	 * @param size
 	 * @param crew
 	 */
-	public Boat(String name, String country, int size, HashSet<Person> crew) {
+	public Boat(String name, String country, double size, HashSet<Person> crew) {
 		super();
 		this.speed = 0;
 		this.name = name;
@@ -125,7 +194,7 @@ public class Boat implements Vehicle {
 	/**
 	 * the abstract size of the boat.
 	 */
-	protected int size;
+	protected double size;
 	/**
 	 * the owner of the boat.
 	 */
@@ -246,14 +315,14 @@ public class Boat implements Vehicle {
 	/**
 	 * @return the size
 	 */
-	public int getSize() {
+	public double getSize() {
 		return size;
 	}
 
 	/**
 	 * @param size the size to set
 	 */
-	public void setSize(int size) {
+	public void setSize(double size) {
 		this.size = size;
 	}
 

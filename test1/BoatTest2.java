@@ -133,7 +133,7 @@ public class BoatTest2 {
 	@Test
 	public final void testGetCurrentMarina(){
 		Boat b = new Boat("The QA Schooner","United Kingdom",300,horatio);
-		Marina m = new Marina(1000);
+		Marina m = new Marina("The Marina", "1 Marina road", 1000);
 		m.add(b);
 		assertEquals(m,b.getCurrentMarina());		
 	}
@@ -141,7 +141,7 @@ public class BoatTest2 {
 	@Test
 	public final void testSetCurrentMarina(){
 		Boat b = new Boat("The QA Schooner","United Kingdom",300);
-		Marina m = new Marina(1000);
+		Marina m = new Marina("The Marina", "1 Marina road", 1000);
 		b.setCurrentMarina(m);
 		assertEquals(m,b.getCurrentMarina());	
 	}
