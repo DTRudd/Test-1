@@ -54,8 +54,13 @@ public class Person {
 		return nationality;
 	}
 
-	public void setNationality(String nationality) {
+	public void setNationality(String nationality, String visaInformation) {
 		this.nationality = nationality;
+		if (!this.nationality.equals("British")){
+			this.visaInformation = visaInformation;
+		} else {
+			this.visaInformation = null;
+		}
 	}
 
 	public String getVisaInformation() {
